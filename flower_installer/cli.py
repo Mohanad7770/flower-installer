@@ -55,12 +55,17 @@ def render(name: str, **ctx) -> str:
     """
     templ_path = TEMPLATES / name
     text = templ_path.read_text()
-    # Special handling for nginx ip_allow splitting into multiple allow lines
-    if name.endswith("flower.nginx.j2") and ctx.get("ip_allow") and "," in ctx["ip_allow"]:
+    if name.__contains__("nginx") and ctx.get("ip_allow") and "," in ctx["ip_allow"]:
+        # Special handling for nginx ip_allow splitting into multiple allow lines
         ips = [ip.strip() for ip in ctx["ip_allow"].split(",") if ip.strip()]
         allow_lines = "\n".join(f"allow {ip};" for ip in ips)
         ctx = dict(ctx)
-        ctx["ip_allow"] = allow_lines
+        ctx["ip_allow"] = allow_lines  # nginx allow directive requires one for each ip address
+    elif name.__contains__("apache") and ctx.get("ip_allow") and "," in ctx["ip_allow"]:
+        # Special handling for apache ip_allow using space delimited values
+        ips = [ip.strip() for ip in ctx["ip_allow"].split(",") if ip.strip()]
+        ctx = dict(ctx)
+        ctx["ip_allow"] = " ".join(ips)  # apache Allow from directive expects space delimited addresses
     return Template(text).render(**ctx)
 
 
@@ -110,7 +115,7 @@ def setup_apache(domain: str, ip_allow: Optional[str], use_auth: bool) -> None:
     :param use_auth: Whether to require basic authentication, or not.
     :return:
     """
-    conf = render("flower.conf.j2", domain=domain, ip_allow=ip_allow, use_auth=use_auth)
+    conf = render("flower.apache.conf.j2", domain=domain, ip_allow=ip_allow, use_auth=use_auth)
     Path("/etc/apache2/sites-available/flower.conf").write_text(conf)
     run("a2enmod proxy proxy_http proxy_wstunnel headers")
     run("a2ensite flower")

@@ -11,8 +11,9 @@
 
     <Location />
         {% if ip_allow %}
-        Require ip {{ ip_allow }}
-        Require all denied
+        Order deny,allow
+        Deny from all
+        Allow from {{ ip_allow }}
         {% else %}
         Require all granted
         {% endif %}
