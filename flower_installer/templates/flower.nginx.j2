@@ -3,8 +3,10 @@ server {
     server_name {{ domain }};
 
     {% if ip_allow %}
-    allow {{ ip_allow }};
+    {{ ip_allow }}
     deny all;
+    {% else %}
+    allow all;
     {% endif %}
 
     location / {

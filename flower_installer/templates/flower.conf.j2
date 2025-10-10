@@ -10,7 +10,12 @@
     ProxyPassReverse / http://127.0.0.1:5555/
 
     <Location />
-        {% if ip_allow %}Require ip {{ ip_allow }}{% else %}Require all granted{% endif %}
+        {% if ip_allow %}
+        Require ip {{ ip_allow }}
+        Require all denied
+        {% else %}
+        Require all granted
+        {% endif %}
         {% if use_auth %}
         AuthType Basic
         AuthName "Flower Dashboard"
