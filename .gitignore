@@ -1,0 +1,38 @@
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+*.dll
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Temporary and cache files
+*.tmp
+.cache/
+
+# Coverage and test artifacts
+.tox/
+.coverage*
+htmlcov/
+
+# System files
+.DS_Store
+Thumbs.db

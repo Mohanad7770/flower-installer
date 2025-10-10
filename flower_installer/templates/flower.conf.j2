@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+    ServerName {{ domain }}
+    ProxyPreserveHost On
+    ProxyRequests Off
+    RequestHeader set X-Forwarded-Proto "https"
+
+    ProxyPass /ws/ ws://127.0.0.1:5555/ws/
+    ProxyPassReverse /ws/ ws://127.0.0.1:5555/ws/
+    ProxyPass / http://127.0.0.1:5555/
+    ProxyPassReverse / http://127.0.0.1:5555/
+
+    <Location />
+        {% if ip_allow %}Require ip {{ ip_allow }}{% else %}Require all granted{% endif %}
+        {% if use_auth %}
+        AuthType Basic
+        AuthName "Flower Dashboard"
+        AuthUserFile /etc/apache2/flower_htpasswd
+        Require valid-user
+        {% endif %}
+    </Location>
+
+    ErrorLog ${APACHE_LOG_DIR}/flower_error.log
+    CustomLog ${APACHE_LOG_DIR}/flower_access.log combined
+</VirtualHost>

@@ -1,0 +1,14 @@
+[Unit]
+Description=Celery Flower Dashboard
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory={{ project_dir }}
+Environment="PATH={{ venv }}/bin"
+ExecStart={{ venv }}/bin/celery flower --address=127.0.0.1 --port=5555 --broker={{ redis_url }}
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
