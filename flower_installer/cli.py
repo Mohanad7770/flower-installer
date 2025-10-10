@@ -176,14 +176,19 @@ def create_app_dir_and_venv(app_dir: str) -> str:
     return str(venv)
 
 
-def write_systemd(app_dir: str, redis_url: str) -> None:
+def write_systemd(app_dir: str, redis_url: str, redis_backend_url: Optional[str] = None) -> None:
     """
     Creates a systemd file for the flower server.
     :param app_dir: The directory where the flower app's venv is installed.
     :param redis_url: The URL of the redis database.
+    :param redis_backend_url: The URL of the redis backend, only specify if different then redis_url.
     :return:
     """
-    service = render("flower.service.j2", project_dir=app_dir, venv=f"{app_dir}/.venv", redis_url=redis_url)
+    service = render("flower.service.j2",
+                     project_dir=app_dir,
+                     venv=f"{app_dir}/.venv",
+                     redis_url=redis_url,
+                     redis_backend_url=redis_backend_url)
     Path("/etc/systemd/system/flower.service").write_text(service)
     run("systemctl daemon-reload")
     run("systemctl enable flower")
@@ -250,7 +255,7 @@ def install(args: argparse.Namespace) -> None:
     if args.certbot:
         issue_cert(args.domain, args.web_server)
 
-    write_systemd(app_dir, args.redis_url)
+    write_systemd(app_dir, args.redis_url, args.redis_backend_url)
 
     print(f"\n🎉 Flower dashboard running at https://{args.domain}")
     if use_auth:
@@ -272,6 +277,7 @@ def main() -> None:
     install_cmd.add_argument("--app-dir",
                              help="Directory to install the venv and run Flower (e.g., /var/www/vhosts/flower-server)")
     install_cmd.add_argument("--redis-url", help="Redis broker URL (e.g., redis://127.0.0.1:6379/0)")
+    install_cmd.add_argument("--redis-backend-url", help="Redis backend URL (e.g., redis://127.0.0.1:6379/1) only specify if different than --redis-url")
     install_cmd.add_argument("--ip-allow", default="", help="Comma-separated list of allowed IPs (optional)")
     install_cmd.add_argument("--create-user", help="Username for Basic Auth (optional)")
     install_cmd.add_argument("--certbot", action="store_true", help="Automatically issue SSL cert via Certbot")

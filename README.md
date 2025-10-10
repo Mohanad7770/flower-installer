@@ -50,6 +50,7 @@ sudo flowerctl install \
   --domain www.yourdomain.com \
   --app-dir /var/www/vhosts/flower-server \
   --redis-url redis://127.0.0.1:6379/0 \
+  --redis-backend-url redis://127.0.0.1:6379/1 \
   --create-user admin \
   --ip-allow 192.168.0.1,192.168.0.2 \
   --certbot

@@ -6,7 +6,7 @@ After=network.target
 User=www-data
 WorkingDirectory={{ project_dir }}
 Environment="PATH={{ venv }}/bin"
-ExecStart={{ venv }}/bin/celery --broker={{ redis_url }} flower --address=127.0.0.1 --port=5555
+ExecStart={{ venv }}/bin/celery --broker={{ redis_url }}{% if redis_backend_url %} --result-backend={{ redis_backend_url }}{% endif %} flower --address=127.0.0.1 --port=5555
 Restart=always
 RestartSec=5
 
