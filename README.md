@@ -11,7 +11,7 @@
 
 > 🔗 **TLDR: Quick Install**
 > ```bash
-> pip install git+https://github.com/YOUR_USERNAME/flower-installer.git
+> pip install git+https://github.com/beachcitiessoftware/flower-installer.git
 > sudo flowerctl install --domain www.yourdomain.com \
 >   --app-dir /var/www/vhosts/flower-server \
 >   --redis-url redis://127.0.0.1:6379/0 --certbot
