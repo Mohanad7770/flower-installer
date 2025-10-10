@@ -7,6 +7,18 @@
 
 **Flower Installer** provides a one-command setup (`flowerctl`) that installs and secures the Celery Flower dashboard with a reverse proxy (Apache or Nginx), optional SSL via Let's Encrypt (Certbot), Basic Authentication, and a systemd service. Perfect for production servers on Ubuntu/Debian.
 
+---
+
+> 🔗 **TLDR: Quick Install**
+> ```bash
+> pip install git+https://github.com/YOUR_USERNAME/flower-installer.git
+> sudo flowerctl install --domain www.yourdomain.com \
+>   --app-dir /var/www/vhosts/flower-server \
+>   --redis-url redis://127.0.0.1:6379/0 --certbot
+> ```
+> 🌐 Visit: https://www.yourdomain.com 
+> 🧹 Uninstall: `sudo flowerctl uninstall`
+
 ## ✨ Features
 - 🚀 One-command setup for Celery Flower
 - 🧱 Auto-creates app folder and virtual environment
